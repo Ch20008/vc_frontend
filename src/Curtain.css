@@ -1,0 +1,133 @@
+.curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  overflow: hidden;
+}
+
+.curtain-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+}
+
+.curtain-panel {
+  width: 50%;
+  height: 100%;
+  background: #000000;
+  position: relative;
+  transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+}
+
+.curtain-panel.left {
+  transform: translateX(0);
+}
+
+.curtain-panel.right {
+  transform: translateX(0);
+}
+
+/* 渐黑阶段 */
+.curtain-fading .curtain-overlay {
+  opacity: 1;
+}
+
+/* 黑屏阶段 */
+.curtain-visible .curtain-overlay {
+  opacity: 1;
+}
+
+/* 拉开阶段 */
+.curtain-opening .curtain-panel.left {
+  transform: translateX(-100%);
+}
+
+.curtain-opening .curtain-panel.right {
+  transform: translateX(100%);
+}
+
+/* 幕布纹理效果 */
+.curtain-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 255, 255, 0.03) 3px,
+      rgba(255, 255, 255, 0.03) 6px
+    );
+  pointer-events: none;
+}
+
+/* 幕布边缘阴影 */
+.curtain-panel.left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+.curtain-panel.right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.4) 0%, 
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .curtain-panel::before {
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 4px
+      );
+  }
+  
+  .curtain-panel.left::after,
+  .curtain-panel.right::after {
+    width: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .curtain-panel.left::after,
+  .curtain-panel.right::after {
+    width: 15px;
+  }
+} 

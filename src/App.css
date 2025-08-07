@@ -1,0 +1,137 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f5f5dc;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+
+
+/* 主要内容区域 */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px;
+  padding: 20px;
+}
+
+/* 标题容器 */
+.title-container {
+  margin-bottom: 40px;
+}
+
+.game-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #8B4513;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.title-text {
+  font-family: 'Arial Black', sans-serif;
+}
+
+.title-icon {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 0 10px;
+}
+
+.organic-icon {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* 分割线 */
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #8B4513;
+  margin: 20px 0;
+  max-width: 400px;
+}
+
+/* 点击提示 */
+.click-hint {
+  margin: 20px 0;
+}
+
+.click-hint p {
+  font-size: 1.2rem;
+  color: #8B4513;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* 版权信息 */
+.copyright-info {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #8B4513;
+  line-height: 1.6;
+}
+
+.copyright-info p {
+  margin: 5px 0;
+}
+
+/* 点击效果 */
+.click-effect {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.effect-circle {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #8B4513;
+  border-radius: 50%;
+  animation: expand 0.6s ease-out forwards;
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 2.5rem;
+  }
+  
+  .click-hint p {
+    font-size: 1rem;
+  }
+  
+  .copyright-info {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: 2rem;
+  }
+} 
